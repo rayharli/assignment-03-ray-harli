@@ -5,16 +5,16 @@ import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js'
 import rhino3dm from 'rhino3dm'
 import { RhinoCompute } from 'rhinocompute'
 
-const definitionName = 'rnd_node.gh'
+const definitionName = 'test2.gh'
 
 // Set up sliders
 const radius_slider = document.getElementById('radius')
 radius_slider.addEventListener('mouseup', onSliderChange, false)
 radius_slider.addEventListener('touchend', onSliderChange, false)
 
-const count_slider = document.getElementById('count')
-count_slider.addEventListener('mouseup', onSliderChange, false)
-count_slider.addEventListener('touchend', onSliderChange, false)
+const move_slider = document.getElementById('move')
+move_slider.addEventListener('mouseup', onSliderChange, false)
+move_slider.addEventListener('touchend', onSliderChange, false)
 
 const loader = new Rhino3dmLoader()
 loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/')
@@ -48,8 +48,8 @@ async function compute() {
     const param1 = new RhinoCompute.Grasshopper.DataTree('Radius')
     param1.append([0], [radius_slider.valueAsNumber])
 
-    const param2 = new RhinoCompute.Grasshopper.DataTree('Count')
-    param2.append([0], [count_slider.valueAsNumber])
+    const param2 = new RhinoCompute.Grasshopper.DataTree('move')
+    param2.append([0], [move_slider.valueAsNumber])
 
     // clear values
     const trees = []
